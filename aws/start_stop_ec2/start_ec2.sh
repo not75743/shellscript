@@ -40,7 +40,7 @@ do
 
 done
 
-### 停止
+### 起動
 ### --arg オプションでjqプログラムにシェル変数を渡す
 aws ec2 start-instances --instance-ids $(aws ec2 describe-instances | jq --arg EC2NAME ${item} '.Reservations[] | select(.Instances[].Tags[].Value == $EC2NAME)' | jq -r '.Instances[].InstanceId')
 
