@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PS3="停止させたいインスタンスを選んでください。何もしないときは q を押下してください > "
+PS3="起動させたいインスタンスを選んでください。何もしないときは q を押下してください > "
 item=""
 
 select item in $(aws ec2 describe-instances | jq '.Reservations[] | select(.Instances[].State.Name == "stopped")' | jq '.Instances[].Tags[] | select(.Key == "Name")' | jq -r '.Value')
